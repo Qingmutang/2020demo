@@ -1,0 +1,6 @@
+说明：
+   1.HttpClient使用
+   2.JSON fastJson使用
+   3.AOP 注解版本使用
+   4.基础类参数  基础类返回
+   
