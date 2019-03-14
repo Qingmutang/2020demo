@@ -1,5 +1,6 @@
 package com.tony.demo.example.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,8 +59,8 @@ public class AuthorizerAppidServiceImpl implements IAuthorizerAppidService {
 				criteria.andUserNameEqualTo(req.getUserName());
 			}
 
-			if (!CollectionUtils.isEmpty(req.getStatus())) {
-				criteria.andStatusIn(req.getStatus());
+			if (!CollectionUtils.isEmpty(req.getStatusList())) {
+				criteria.andStatusIn(req.getStatusList());
 			}
 
 			List<AuthorizerAppid> exampleOut = authorizerAppidMapper.selectByExample(example);
@@ -106,9 +107,9 @@ public class AuthorizerAppidServiceImpl implements IAuthorizerAppidService {
 				criteria.andUserNameEqualTo(req.getUserName());
 			}
 
-			if (!CollectionUtils.isEmpty(req.getStatus())) {
+			if (!CollectionUtils.isEmpty(req.getStatusList())) {
 				/** 集合匹配 */
-				criteria.andStatusIn(req.getStatus());
+				criteria.andStatusIn(req.getStatusList());
 			}
 
 			BaseQueryResult<AuthorizerAppid> result = BaseModel.selectByPage(authorizerAppidMapper, example,
@@ -162,6 +163,7 @@ public class AuthorizerAppidServiceImpl implements IAuthorizerAppidService {
 			if(CollectionUtils.isEmpty(exampleList)) {
 				//insert
 				AuthorizerAppid insert = new AuthorizerAppid();
+				//LocalDateTime now = LocalDateTime.now(); 
 				Long now = System.currentTimeMillis();
 				insert.setCreatedTime(now);
 				insert.setUpdatedTime(now);
@@ -177,7 +179,6 @@ public class AuthorizerAppidServiceImpl implements IAuthorizerAppidService {
 				
 				BeanUtils.copyProperties(req, update, CollectionNullPropertyUtil.getNullPropertyNames(req)); 
 				update.setUpdatedTime(System.currentTimeMillis()); 
-				
 				flag = authorizerAppidMapper.updateByPrimaryKey(update)>0;
 				BeanUtils.copyProperties(update, respItem);
 			}

@@ -25,7 +25,9 @@ public class AuthorizerAppidReq implements Serializable{
 
     private String microName;
 
-    private List<Byte> status;
+    private Byte status;
+    
+    private List<Byte> statusList;
 
     private String version;
 
