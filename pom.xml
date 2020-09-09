@@ -5,7 +5,13 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>mybatis-demo</module>
-	</modules>
+		<module>mybatis_spring_demo</module>
+        <module>servlet-demo</module>
+        <module>demo-springmvc-ann</module>
+        <module>ssm-simple-demo</module>
+		<module>ssm-simple-ann</module>
+        <module>mybatis-generator</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
